@@ -1,5 +1,13 @@
 <x-apps-layout>
-    <div class="py-12">
+    <div class="py-9">
+        <div class="max-w-9xl mx-auto sm:px-6 lg:px-8">
+                <div class="p-6 text-4xl font-semibold text-center text-white">
+                <h1>Edit User</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-gray-900 overflow-hidden shadow-md rounded-lg">
                 <div class="p-6 text-gray-100">

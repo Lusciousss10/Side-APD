@@ -13,7 +13,7 @@
         <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/sidebar.css'])
+        @vite(['resources/css/app.css'])
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
         <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/videojs-flash@2.1.0/dist/videojs-flash.min.js"></script>

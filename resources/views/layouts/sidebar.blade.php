@@ -28,10 +28,11 @@
         <img src="{{ asset('images/blank.jpg') }}" alt="profile-img" class="w-10 h-10 rounded-full transition-all duration-300">
         <div class="user-detail ml-6 whitespace-nowrap">
           <h3 class="transition-all duration-300">{{ Auth::user()->name }}</h3>
-          <span class="transition-all duration-300">{{ Auth::user()->usertype }}</span>
+          <span class="transition-all duration-300">{{ Auth::user()->email }}</span>
         </div>
       </div>
     </a>
+
     {{-- admin links --}}
     @if (Auth::user()->usertype == 'admin')
     <ul class="nav-links">
@@ -64,17 +65,16 @@
             <span class="tooltip">Manage User</span>
         </li>
         <li>
-          <a :href="route('logout')" class="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class='bx bxs-log-out'></i>
-              <span class="title">Log Out</span>
+          <a href="{{ route('logout') }}" class="logout" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?')) { document.getElementById('logout-form').submit(); }">
+            <i class='bx bxs-log-out'></i>
+            <span class="title">Log Out</span>
           </a>
           <span class="tooltip">Log Out</span>
-      
+        </li>
           <!-- Logout Form -->
           <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
               @csrf
           </form>
-      </li>
     </ul>
     @endif
 
@@ -97,23 +97,22 @@
         </li>
         <li>
             <a href="userviolations" class="{{ request()->routeIs('user.violation') ? 'active' : '' }}">
-                <i class="bx bx-cog"></i>
+                <i class="bx bx-history"></i>
                 <span class="title">Violations History</span>
             </a>
             <span class="tooltip">Violations History</span>
         </li>
         <li>
-          <a :href="route('logout')" class="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class='bx bxs-log-out'></i>
-              <span class="title">Log Out</span>
+          <a href="{{ route('logout') }}" class="logout" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?')) { document.getElementById('logout-form').submit(); }">
+            <i class='bx bxs-log-out'></i>
+            <span class="title">Log Out</span>
           </a>
           <span class="tooltip">Log Out</span>
-        </li>
+        </li>        
           <!-- Logout Form -->
           <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
               @csrf
           </form>
-        </li>
     </ul>
     @endif
 
@@ -135,27 +134,27 @@
             <span class="tooltip">Equipped CCTV</span>
         </li>
         <li>
-          <a href="{{ url('manager/violations') }}" class="{{ request()->routeIs('manager.violation') ? 'active' : '' }}">
-            <i class='bx bx-history'></i>
-              <span class="title">Violations History</span>
-          </a>
-          <span class="tooltip">Violations History</span>
-      </li>
+            <a href="{{ url('manager/violations') }}" class="{{ request()->routeIs('manager.violation') ? 'active' : '' }}">
+                <i class='bx bx-history'></i>
+                <span class="title">Violations History</span>
+            </a>
+            <span class="tooltip">Violations History</span>
+        </li>
         <li>
-          <a :href="route('logout')" class="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class='bx bxs-log-out'></i>
-              <span class="title">Log Out</span>
+          <a href="{{ route('logout') }}" class="logout" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?')) { document.getElementById('logout-form').submit(); }">
+            <i class='bx bxs-log-out'></i>
+            <span class="title">Log Out</span>
           </a>
           <span class="tooltip">Log Out</span>
-      
-          <!-- Logout Form -->
-          <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
-              @csrf
-          </form>
-      </li>
+        </li>
+            <!-- Logout Form -->
+            <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
+                @csrf
+            </form>
     </ul>
     @endif
-  </section>
+    </section>
+
   <section class="home">
     <p>{{ $slot }}</p>
     <footer class="sticky-footer">

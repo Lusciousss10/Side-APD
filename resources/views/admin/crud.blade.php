@@ -52,8 +52,10 @@
                                                             <a href="/edit/{{ $item->id }}" class="inline-block px-4 py-2 text-sm font-medium text-center text-white bg-blue-500 rounded hover:bg-blue-900">Edit</a>
                                                         </td>
                                                         <td class="px-4 py-2 text-center whitespace-nowrap">
-                                                            <a href="/delete/{{ $item->id }}" class="inline-block px-4 py-2 text-sm font-medium text-center text-white bg-red-500 rounded hover:bg-red-600">Delete</a>
-                                                        </td>                                                        
+                                                            <a href="/delete/{{ $item->id }}" 
+                                                               class="inline-block px-4 py-2 text-sm font-medium text-center text-white bg-red-500 rounded hover:bg-red-600"
+                                                               onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user? This action cannot be undone.')) { window.location.href='/delete/{{ $item->id }}'; }">Delete</a>
+                                                        </td>                                                  
                                                     </tr>
                                                 @endforeach
                                             @else

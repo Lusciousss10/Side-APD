@@ -7,69 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tugas Akhir Nopal</title>
     <link rel="stylesheet" href="styles.css" />
-    @vite(['resources/css/sidebar.css','resources/js/app.js'])</head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
 
 <body>
-    <div class="wrapper">
-        <div class="form-wrapper sign-in">
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <h2>Login</h2>
-                <div class="input-group">
-                    <input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username">
-                    <label for="email" :value="__('Email')">Email</label>
+    <!-- Login Section -->
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <a class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                <i class='bx bx-cctv w-8 h-8 mr-2'></i>
+                Side-APD
+            </a>
+            <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <h1 class="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                        Website Based CCTV Monitoring
+                    </h1>
+                    <form class="space-y-4 md:space-y-6" method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                            <input type="email" name="email" id="email" :value="old('email')" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="email" required autofocus autocomplete="username">
+                        </div>
+                        <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-600" />
+                        <div>
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                            <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required autocomplete="current-password">
+                        </div>
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-500 transition duration-300 ease-in-out transform hover:scale-105">
+                            Sign in
+                        </button>                            
+                    </form>
                 </div>
-                <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-600"/>
-                <div class="input-group">
-                    <input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" required>
-                    <label for="password" :value="__('Password')">Password</label>
-                </div>
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                <div class="remember">
-                    <label><input type="checkbox"> Remember me</label>
-                </div>
-                <button type="submit">Login</button>
-                {{-- <div class="signUp-link">
-                    <p>Don't have an account? <a href="#" class="signUpBtn-link">Sign Up</a></p>
-                </div> --}}
-            </form>
+            </div>
         </div>
-        <div class="form-wrapper sign-up">
-            <form method="POST" action="{{ route('register') }}">
-                <h2>Sign Up</h2>
-                <div class="input-group">
-                    <input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name">
-                    <label for="name" :value="__('Name')">Username</label>
-                </div>
-                <div class="input-group">
-                    <input id="email" type="email" name="email" :value="old('email')" required autocomplete="username">
-                    <label for="email" :value="__('Email')">Email</label>
-                </div>
-                <div class="input-group">
-                    <input id="password" type="password" name="password" required autocomplete="new-password">
-                    <label for="password" :value="__('Password')">Password</label>
-                </div>
-                <div class="remember">
-                    <label><input type="checkbox"> I agree to the terms & conditions</label>
-                </div>
-                <button type="submit">Sign Up</button>
-                {{-- <div class="signUp-link">
-                      <p>Already have an account? <a href="#" class="signInBtn-link">Sign In</a></p> --}}
-                </div>
-            </form>
-        </div>
-    </div>
-    <script>
-        const signInBtnLink = document.querySelector('.signInBtn-link');
-        const signUpBtnLink = document.querySelector('.signUpBtn-link');
-        const wrapper = document.querySelector('.wrapper');
-        signUpBtnLink.addEventListener('click', () => {
-            wrapper.classList.toggle('active');
-        });
-        signInBtnLink.addEventListener('click', () => {
-            wrapper.classList.toggle('active');
-        });
-    </script>
+    </section>
 </body>
-
 </html>

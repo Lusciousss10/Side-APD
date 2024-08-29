@@ -8,21 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('violations', function (Blueprint $table) {
+        Schema::create('statistics', function (Blueprint $table) {
             $table->id();
-            $table->string('filename');
-            $table->date('date');
-            $table->time('time');
-            $table->string('path');
+            $table->integer('jumlah_meninggal')->default(0);
+            $table->integer('jumlah_kasus_ditindaklanjuti')->default(0);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('violations');
+        Schema::dropIfExists('statistics');
     }
 };

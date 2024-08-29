@@ -5,13 +5,14 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <div class="py-4">
-        <div class="max-w-9xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-9xl mx-auto sm:px-12 lg:px-8">
             <div class="p-6 text-4xl font-semibold text-center text-white">
                 <h1>Modelled CCTV</h1>
                 <div class="flex items-center justify-center">
-                    <div class="p-6 bg-gray-800 flex justify-center items-center rounded-lg shadow-lg w-fit">
+                    <!-- Invisible container -->
+                    <div class="p-6 flex justify-center items-center rounded-lg shadow-lg w-fit">
                         <!-- Video.js Player -->
-                        <video id="videoPlayer" class="video-js vjs-default-skin" controls width="640" height="360" class="rounded-lg">
+                        <video id="videoPlayer" class="video-js vjs-default-skin" controls width="1280" height="780" class="rounded-lg">
                             <source src="http://127.0.0.1:8000/videos/playlist.m3u8" type="application/x-mpegURL">
                         </video>
                     </div>

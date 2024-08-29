@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Violation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
 
-class ManagerViolationController extends Controller
+class ViolationController extends Controller
 {
     public function index()
     {
         $violations = Violation::all();
-        return view('manager.violations', compact('violations'));
+        $violations = Violation::paginate(3);
+        return view('admin.violations', compact('violations'));
     }
 
     // Mengunduh file
@@ -24,7 +25,7 @@ class ManagerViolationController extends Controller
         if (File::exists($filePath)) {
             return Response::download($filePath);
         } else {
-            return redirect()->route('manager.violations')->with('error', 'File not found');
+            return redirect()->route('admin.violations')->with('error', 'File not found');
         }
     }
 
@@ -40,7 +41,7 @@ class ManagerViolationController extends Controller
 
         $violation->delete();
 
-        return redirect()->route('manager.violations')->with('success', 'Violation deleted successfully');
+        return redirect()->route('admin.violations')->with('success', 'Violation deleted successfully');
     }
 
     // Menghapus semua violations
@@ -56,6 +57,6 @@ class ManagerViolationController extends Controller
             $violation->delete();
         }
 
-        return redirect()->route('manager.violations')->with('success', 'All violations deleted successfully');
+        return redirect()->route('admin.violations')->with('success', 'All violations deleted successfully');
     }
 }

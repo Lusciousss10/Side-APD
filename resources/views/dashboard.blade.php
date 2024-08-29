@@ -42,9 +42,9 @@
                         <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
                             <div class="text-center">
                                 <h2 class="text-xl font-bold">Statistik Pelanggaran</h2>
-                                <p>Jumlah Pelanggaran: 120</p>
-                                <p>Jumlah Orang Meninggal: 5</p>
-                                <p>Tren Bulan Ini: Naik 10%</p>
+                                <p>Total Pelanggaran: {{ $totalViolations }}</p>
+                                <p>Jumlah Orang Meninggal: {{ $violationstatistic->jumlah_meninggal }}</p>
+                                <p>Jumlah Kasus yang Ditindaklanjuti: {{ $violationstatistic->jumlah_kasus_ditindaklanjuti }}</p>
                             </div>
                         </div>
                     </div>
