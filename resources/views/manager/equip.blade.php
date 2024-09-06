@@ -4,22 +4,19 @@
     <script src="https://cdn.jsdelivr.net/npm/video.js@7.11.4/dist/video.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-    <div class="py-4">
+    <div class="py-1">
         <div class="max-w-9xl mx-auto sm:px-12 lg:px-8">
-            <div class="p-6 text-4xl font-semibold text-center text-white">
+            <div class="p-6 text-4xl font-semibold text-center text-gray-900 dark:text-white">
                 <h1>Modelled CCTV</h1>
-                <div class="flex items-center justify-center">
-                    <!-- Invisible container -->
-                    <div class="p-6 flex justify-center items-center rounded-lg shadow-lg w-fit">
+                <div class="p-6 flex items-center justify-center">
                         <!-- Video.js Player -->
-                        <video id="videoPlayer" class="video-js vjs-default-skin" controls width="1280" height="780" class="rounded-lg">
+                        <video id="videoPlayer" class="video-js vjs-default-skin" controls width="1280" height="720" class="rounded-lg">
                             <source src="http://127.0.0.1:8000/videos/playlist.m3u8" type="application/x-mpegURL">
                         </video>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </x-apps-layout>    
 
 <script>

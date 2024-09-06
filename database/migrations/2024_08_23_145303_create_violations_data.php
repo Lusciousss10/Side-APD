@@ -13,7 +13,8 @@ return new class extends Migration
             $table->string('filename');
             $table->date('date');
             $table->time('time');
-            $table->string('path');
+            $table->string('mime_type')->nullable(); // Untuk menyimpan MIME type file (misalnya image/jpeg)
+            $table->binary('file_data')->nullable(); // Untuk menyimpan file gambar dalam bentuk binary (BLOB)
             $table->timestamps();
         });
     }

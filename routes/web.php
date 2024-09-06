@@ -35,7 +35,7 @@ Route::middleware(['auth', 'managerMiddleware'])->group(function () {
     Route::get('/manager/dashboard', [ManagerStatistikController::class, 'index'])->name('manager.dashboard');
     Route::get('/manager/equip', [ManagerEquipController::class, 'index'])->name('manager.equip');
     Route::get('/manager/violations', [ManagerViolationController::class, 'index'])->name('manager.violations');
-    Route::get('/manager/violations/download/{filename}', [ManagerViolationController::class, 'download'])->name('manager.download');
+    Route::get('/manager/violations/download-photo/{id}', [ManagerViolationController::class, 'downloadPhoto'])->name('manager.download');
     Route::delete('/manager/violations/{id}', [ManagerViolationController::class, 'destroy'])->name('manager.destroy');
     Route::delete('/manager/violations/delete-all', [ManagerViolationController::class, 'deleteAll'])->name('manager.deleteAll');
     Route::get('/manager/statistics/edit', [ManagerStatistikController::class, 'edit'])->name('manager.statistics.edit');
@@ -47,7 +47,8 @@ Route::middleware(['auth', 'userMiddleware'])->group(function () {
     Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
     Route::get('equip', [UserEquipController::class, 'index'])->name('user.equip');
     Route::get('userviolations', [UserViolationController::class, 'index'])->name('user.violations');
-    Route::get('userviolations/download/{filename}', [UserViolationController::class, 'download'])->name('user.download');
+    Route::get('userviolations/download-photo/{id}', [UserViolationController::class, 'downloadPhoto'])->name('user.download');
+    Route::delete('userviolations/{id}', [UserViolationController::class, 'destroy'])->name('user.destroy');
 });
 
 // adminnski
@@ -55,7 +56,7 @@ Route::middleware(['auth', 'adminMiddleware'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/equip', [AdminEquipController::class, 'index'])->name('admin.equip');
     Route::get('/admin/violations', [ViolationController::class, 'index'])->name('admin.violations');
-    Route::get('/admin/violations/download/{filename}', [ViolationController::class, 'download'])->name('admin.download');
+    Route::get('/admin/violations/download-photo/{id}', [ViolationController::class, 'downloadPhoto'])->name('admin.download');
     Route::delete('/admin/violations/{id}', [ViolationController::class, 'destroy'])->name('admin.destroy');
     Route::delete('/admin/violations/delete-all', [ViolationController::class, 'deleteAll'])->name('admin.deleteAll');
     Route::get('/admin/crud', [CRUDController::class, 'index'])->name('admin.crud');

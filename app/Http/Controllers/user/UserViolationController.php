@@ -13,18 +13,40 @@ class UserViolationController extends Controller
     public function index()
     {
         $violations = Violation::all();
-        $violations = Violation::paginate(3);
+        $violations = Violation::paginate(5);
         return view('userviolations', compact('violations'));
     }
 
-    public function download($filename)
+    public function downloadPhoto($id)
     {
-        $filePath = public_path('violations/' . $filename);
+        // Cari data berdasarkan ID
+        $violation = Violation::findOrFail($id);
 
+        // Ambil data file dari kolom blob (misalnya kolom file_data)
+        $fileData = $violation->file_data; // 'file_data' adalah kolom blob di database
+        $mimeType = $violation->mime_type; // Pastikan ada kolom 'mime_type' di database
+
+        // Beri nama file yang akan diunduh
+        $filename = $violation->filename;
+
+        // Buat respons download
+        return Response::make($fileData, 200, [
+            'Content-Type' => $mimeType,
+            'Content-Disposition' => 'attachment; filename="' . $filename . '"'
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $violation = Violation::findOrFail($id);
+
+        $filePath = public_path('violations/' . $violation->filename);
         if (File::exists($filePath)) {
-            return Response::download($filePath);
-        } else {
-            return redirect()->route('userviolations')->with('error', 'File not found');
+            File::delete($filePath);
         }
+
+        $violation->delete();
+
+        return redirect()->route('user.violations')->with('success', 'Violation deleted successfully');
     }
 }

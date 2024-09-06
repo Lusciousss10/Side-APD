@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "@videojs/http-streaming": "^3.13.2",
+        "flowbite": "^2.5.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "simple-peer": "^9.11.1",

@@ -1,7 +1,7 @@
 <x-apps-layout>
-    <div class="py-3">
+    <div class="py-6">
         <div class="max-w-9xl mx-auto sm:px-6 lg:px-8">
-            <div class="p-6 text-4xl font-semibold text-center text-white">
+            <div class="p-6 text-4xl font-semibold text-center text-gray-900 dark:text-white">
                 <h1>Manager Dashboard</h1>
             </div>
         </div>
@@ -37,13 +37,13 @@
                 </a>
 
                 <!-- Statistik Container -->
-                <div class="relative rounded-lg shadow-lg h-64 bg-gray-800 text-white overflow-hidden">
-                    <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-                        <div class="text-center">
-                            <h2 class="text-xl font-bold">Statistik Pelanggaran</h2>
-                            <p>Total Pelanggaran: {{ $totalViolations }}</p>
-                            <p>Jumlah Orang Meninggal: {{ $violationstatistic->jumlah_meninggal }}</p>
-                            <p>Jumlah Kasus yang Ditindaklanjuti: {{ $violationstatistic->jumlah_kasus_ditindaklanjuti }}</p>
+                <div class="relative rounded-lg shadow-lg h-64  text-white overflow-hidden bg-white dark:bg-gray-800">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">Statistik Pelanggaran</h2>
+                            <p class="text-gray-900 dark:text-gray-300">Total Pelanggaran: {{ $totalViolations }}</p>
+                            <p class="text-gray-900 dark:text-gray-300">Jumlah Orang Meninggal: {{ $violationstatistic->jumlah_meninggal }}</p>
+                            <p class="text-gray-900 dark:text-gray-300">Jumlah Kasus yang Ditindaklanjuti: {{ $violationstatistic->jumlah_kasus_ditindaklanjuti }}</p>
                             <a href="{{ route('manager.statistics.edit') }}" class="mt-4 inline-block px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700">Edit</a>
                         </div>
                     </div>
