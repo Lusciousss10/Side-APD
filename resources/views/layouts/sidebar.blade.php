@@ -39,6 +39,7 @@
             Side-APD
           </a>
         </div>
+        <div id="date-time" class="text-lg text-gray-900 dark:text-white"></div>
         <div class="flex items-center">
             <div class="flex items-center ms-3">
               <div>
@@ -201,6 +202,16 @@
 
 
     <script>
+      function updateTime() {
+         const now = new Date();
+         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+         const dateString = now.toLocaleDateString(undefined, options);
+         const timeString = now.toLocaleTimeString();
+         document.getElementById('date-time').innerHTML = `${dateString} ${timeString}`;
+      }
+      setInterval(updateTime, 1000); // Update every second
+      updateTime(); // Initial call to set time immediately
+        
       var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
       var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
