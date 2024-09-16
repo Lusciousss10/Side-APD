@@ -13,6 +13,7 @@ class ViolationController extends Controller
     public function index()
     {
         $violations = Violation::all();
+        $violations = Violation::orderBy('time', 'desc')->get();
         $violations = Violation::paginate(5);
         return view('admin.violations', compact('violations'));
     }
