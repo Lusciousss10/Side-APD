@@ -8,6 +8,11 @@
         </div>
         <div class="container mx-auto px-4">
             <div class="overflow-x-auto">
+                @if (session('success'))
+                    <div class="bg-green-500 text-white p-4 rounded mb-4">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700">
                     <thead>
                         <tr class="text-left text-gray-900 dark:text-gray-300">
