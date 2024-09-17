@@ -17,6 +17,20 @@
     
         <!-- Table -->
         <div class="overflow-x-auto">
+            <!-- Menampilkan Pesan Sukses atau Gagal -->
+            @if (session('success'))
+                <div class="bg-green-500 text-white p-4 rounded mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
+        
+            @if (session('fail'))
+                <div class="bg-red-500 text-white p-4 rounded mb-4">
+                    {{ session('fail') }}
+                </div>
+            @endif
+        
+            <!-- Tabel Pengguna -->
             <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700">
                 <thead class="bg-gray-200 dark:bg-gray-900">
                     <tr class="text-left text-gray-700 dark:text-gray-300">
@@ -52,6 +66,6 @@
                     @endif
                 </tbody>
             </table>
-        </div>
+        </div>        
     </div>    
 </x-apps-layout>
