@@ -63,7 +63,7 @@ class CRUDController extends Controller
                 'usertype' => $request->usertype,
             ]);
 
-            return redirect('admin/crud')->with('success', 'user berhasil di update');
+            return redirect('admin/crud')->with('success', 'User berhasil di update');
         } catch (\Exception $e) {
             return redirect('admin/edit/user')->with('fail', $e->getMessage());
         }
@@ -81,7 +81,7 @@ class CRUDController extends Controller
     {
         try {
             User::where('id', $id)->delete();
-            return redirect('admin/crud')->with('success', 'User Deleted Successfully');
+            return redirect('admin/crud')->with('success', 'User berhasil dihapus');
         } catch (\Exception $e) {
             return redirect('admin/crud')->with('fail', $e->getMessage());
         }
